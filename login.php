@@ -2,8 +2,7 @@
 session_start();
 include 'confing.inc.php';
 
-// --- ADAPTADOR DE CONEXÃO ---
-// Isso garante que funcione tanto se a variável for $conn quanto $conexao
+
 if (isset($conn) && !isset($conexao)) {
     $conexao = $conn;
 }
@@ -11,7 +10,7 @@ if (isset($conn) && !isset($conexao)) {
 if (!isset($conexao)) {
     die("Erro: Conexão com o banco de dados não encontrada. Verifique o arquivo confing.inc.php");
 }
-// ----------------------------
+
 
 $erro = '';
 
@@ -22,22 +21,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (empty($email) || empty($senha)) {
         $erro = "Preencha e-mail e senha.";
     } else {
-        // Busca o usuário
+
         $sql = "SELECT id, nome, senha FROM usuarios WHERE email = '$email'";
         $resultado = mysqli_query($conexao, $sql);
 
         if ($resultado && mysqli_num_rows($resultado) > 0) {
             $usuario = mysqli_fetch_assoc($resultado);
 
-            // Verifica a senha
+
             if (password_verify($senha, $usuario['senha'])) {
                 
-                // Login Sucesso: Salva na sessão
+                
                 $_SESSION['usuario_id'] = $usuario['id'];
                 $_SESSION['usuario_nome'] = $usuario['nome'];
 
-                // --- REDIRECIONAMENTO ---
-                // Já coloquei pag.php pois index.php deu erro antes
+                
                 header("Location: pag.php"); 
                 exit();
                 
