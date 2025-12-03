@@ -41,7 +41,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $erro = "Este e-mail já está cadastrado.";
         } else {
             
-            // 5. CRIPTOGRAFIA E CADASTRO
             $senha_hashed = password_hash($senha, PASSWORD_DEFAULT);
             
             $sql_insert = "INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)";
