@@ -1,14 +1,14 @@
-#integrates
--joao pedro medeiros 
--joao victor dias
--anthony
--raphael carvalho
--jose caio 
+# Integrates
+- João Pedro Medeiros 
+- João Vitor Dias
+- Anthony Silveira
+- Raphael Carvalho
+- José Caio Linhares
 
 
-#integraçoes
--sistema de login
--sistema de cadastro
--sistema de carrinho(sacola)
--sistema de loja afiliada
--banco de dados para (usuario e produtos)
+# Integrações 
+- Sistema de login
+- Sistema de cadastro
+- Sistema de carrinho(sacola)
+- Sistema de loja afiliada
+- Banco de dados para (usuario e produtos)
