@@ -1,5 +1,5 @@
 # Visão geral
-Aqui temos um site de uma loja direcionada ao público gamer, esse site possui uma variedade de produtos para agradar todo o público-alvo, possuindo desde canecas e camisas até jogos de mídia física e digital
+Aqui temos um site de uma loja direcionada ao público gamer, esse site possui uma variedade de produtos para agradar todo o público-alvo, possuindo desde canecas e camisas até jogos de mídia digital
 
 ## Integrações 
 - Sistema de login
