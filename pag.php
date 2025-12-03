@@ -1,23 +1,17 @@
 <?php
-// 1. INICIAR A SESSÃO 
+ 
 session_start();
 
-// CONEXÃO
 include 'confing.inc.php'; 
 
-//  LÓGICA DA SACOLA PHP
 
-// Se não existir a sacola ainda, cria uma vazia
 if (!isset($_SESSION['sacola'])) {
     $_SESSION['sacola'] = array();
 }
 
-// DETECTA O NOME DO ARQUIVO ATUAL AUTOMATICAMENTE (Corrige o erro 404)
 $pagina_atual = $_SERVER['PHP_SELF'];
 
-// A: ADICIONAR PRODUTO NA SACOLA
 if (isset($_GET['acao']) && $_GET['acao'] == 'add') {
-    // Pega os dados da URL
     $item = array(
         'nome' => $_GET['nome'],
         'preco' => $_GET['preco'],
@@ -25,34 +19,26 @@ if (isset($_GET['acao']) && $_GET['acao'] == 'add') {
         'link' => $_GET['link']
     );
     
-    // Adiciona no array da sessão
     $_SESSION['sacola'][] = $item;
     
-    // Redireciona para a PRÓPRIA PÁGINA
     header("Location: $pagina_atual?open_cart=true");
     exit();
 }
 
-//  REMOVER PRODUTO DA SACOLA
 if (isset($_GET['acao']) && $_GET['acao'] == 'remove') {
     $id_remocao = $_GET['id'];
     
-    // Remove o item pelo índice
     if(isset($_SESSION['sacola'][$id_remocao])){
         unset($_SESSION['sacola'][$id_remocao]);
-        // Reorganiza os índices do array
         $_SESSION['sacola'] = array_values($_SESSION['sacola']);
     }
     
-    // Redireciona para a PRÓPRIA PÁGINA
     header("Location: $pagina_atual?open_cart=true");
     exit();
 }
 
-// - FIM DA LÓGICA DA SACOLA 
 
 
-// LÓGICA DE FILTRO DE PRODUTOS
 $filtro_sql = "";
 $titulo_secao = "DESTAQUES DA LOJA"; 
 
@@ -330,10 +316,8 @@ $result = mysqli_query($conn, $sql);
             }
         }
 
-        // Verifica se o PHP pediu para abrir a sacola
         <?php if(isset($_GET['open_cart']) && $_GET['open_cart'] == 'true'): ?>
             toggleCart(); 
-            // Limpa a URL 
             if (window.history.replaceState) {
                 window.history.replaceState(null, null, window.location.pathname);
             }
