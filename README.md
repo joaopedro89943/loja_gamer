@@ -17,9 +17,8 @@ Aqui temos um site de uma loja direcionada ao público gamer, esse site possui u
 - Após isso, importe o arquivo "banco_loja.sql" para dentro da parte de Database do Ambiente de Desenvimento
 
 
-# Integrates
-- João Pedro Medeiros (Front
-- end)
+# Integrantes
+- João Pedro Medeiros (Frontend)
 - João Vitor Dias (Banco de Dados)
 - Anthony Silveira (Backend)
 - Raphael Carvalho (Backend)
