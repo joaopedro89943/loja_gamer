@@ -9,7 +9,7 @@ if (!isset($conexao) || !$conexao) {
     die("ERRO FATAL: Não foi possível conectar ao banco de dados.");
 }
 
-$nome = ''; // Alterado de $nome_produto para $nome
+$nome = ''; 
 $email = '';
 $senha = '';
 $erro = '';
@@ -17,11 +17,11 @@ $sucesso = '';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
-    $nome = trim($_POST['nome_produto'] ?? ''); // Alterado de $nome_produto para $nome
+    $nome = trim($_POST['nome_produto'] ?? ''); 
     $email = trim($_POST['email'] ?? '');
     $senha = $_POST['senha'] ?? '';
 
-    if (empty($nome) || empty($email) || empty($senha)) { // Alterado de $nome_produto para $nome
+    if (empty($nome) || empty($email) || empty($senha)) { 
         $erro = "Todos os campos são obrigatórios.";
     } else {
         $sql_check = "SELECT id FROM usuarios WHERE email = ? AND senha = ?";
@@ -35,9 +35,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $usuario = mysqli_fetch_assoc($result_check);
             $usuario_id = $usuario['id'];
             
-            $sql_produto = "INSERT INTO produtos (usuario_id, nome) VALUES (?, ?)"; // Alterado para usar $nome
+            $sql_produto = "INSERT INTO produtos (usuario_id, nome) VALUES (?, ?)"; 
             $stmt_produto = mysqli_prepare($conexao, $sql_produto);
-            mysqli_stmt_bind_param($stmt_produto, "is", $usuario_id, $nome); // Alterado para usar $nome
+            mysqli_stmt_bind_param($stmt_produto, "is", $usuario_id, $nome); 
             
             if (mysqli_stmt_execute($stmt_produto)) {
                 mysqli_stmt_close($stmt_produto);
@@ -112,3 +112,4 @@ if (isset($_GET['cadastro']) && $_GET['cadastro'] == 'sucesso') {
 
 </body>
 </html>
+
