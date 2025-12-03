@@ -1,18 +1,15 @@
 <?php
-// 1. INCLUSÃO DA CONEXÃO
 include 'confing.inc.php'; 
 
-// --- CORREÇÃO DE NOME DA VARIÁVEL (O "PULO DO GATO") ---
-// Se o seu arquivo de config criou $conn, nós passamos para $conexao
+
 if (isset($conn) && !isset($conexao)) {
     $conexao = $conn;
 }
 
-// Verifica se a conexão existe mesmo
+
 if (!isset($conexao) || !$conexao) {
     die("ERRO FATAL: Não foi possível conectar ao banco de dados. Verifique se o arquivo 'confing.inc.php' está criando a variável '$conn' ou '$conexao'.");
 }
-// ---------------------------------------------------------
 
 $nome = '';
 $email = '';
@@ -20,13 +17,13 @@ $erro = '';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
-    // 2. CAPTURA SEGURA (Usando ?? para evitar Warning)
+    
     $nome = trim($_POST['nome'] ?? '');
     $email = trim($_POST['email'] ?? '');
     $senha = $_POST['senha'] ?? '';
     $confirmar_senha = $_POST['confirmar_senha'] ?? '';
 
-    // 3. VALIDAÇÕES
+   
     if (empty($nome) || empty($email) || empty($senha) || empty($confirmar_senha)) {
         $erro = "Todos os campos são obrigatórios.";
     } elseif ($senha !== $confirmar_senha) {
@@ -35,8 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $erro = "A senha deve ter no mínimo 6 caracteres.";
     } else {
         
-        // 4. VERIFICAÇÃO DE EMAIL DUPLICADO
-        // Agora $conexao é garantido existir pelo bloco lá em cima
+        
         $email_seguro = mysqli_real_escape_string($conexao, $email);
         $sql_check = "SELECT email FROM usuarios WHERE email = '$email_seguro'";
         $result_check = mysqli_query($conexao, $sql_check); 
