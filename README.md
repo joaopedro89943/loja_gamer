@@ -18,8 +18,9 @@ Aqui temos um site de uma loja direcionada ao público gamer, esse site possui u
 
 
 # Integrates
-- João Pedro Medeiros 
-- João Vitor Dias
-- Anthony Silveira
-- Raphael Carvalho
-- José Caio Linhares
+- João Pedro Medeiros (Front
+- end)
+- João Vitor Dias (Banco de Dados)
+- Anthony Silveira (Backend)
+- Raphael Carvalho (Backend)
+- José Caio Linhares (Backend)
